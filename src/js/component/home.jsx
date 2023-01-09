@@ -21,6 +21,7 @@ const Home = () => {
 	const [sombraColor1, setSombra1] = useState ("");
 	const [sombraColor2, setSombra2] = useState ("");
 	const [sombraColor3, setSombra3] = useState ("");
+	// const [display, setDisplay] =useState("");
 
 	function encenderRojo() {
 
@@ -76,6 +77,14 @@ function alternarColor() {
 	}
 
 }
+
+// function desplegarVioleta() {
+// if(display === "d-none"){
+// 	setDisplay("")
+// }else{
+
+// }
+// }
 return (
 	<div className="text-center d-flex flex-column align-items-center">
 		<div class="bg-dark" style={{height:"150px", width:"10px"}}></div>
@@ -85,6 +94,7 @@ return (
 		<button className={"btn border rounded-circle mb-3 mx-2 btn-success "} onClick={encenderVerde} style={{height: "100px", boxShadow: sombraColor3}}></button>
 		</div>
 		<button type="button" className="btn btn-info m-5" onClick={alternarColor}>Click to change light</button>
+		{/* <button type="button" className="btn btn-info m-5" onClick={desplegarVioleta}>Click to purple light</button> */}
 	</div>
 );
 };
