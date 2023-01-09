@@ -21,7 +21,9 @@ const Home = () => {
 	const [sombraColor1, setSombra1] = useState ("");
 	const [sombraColor2, setSombra2] = useState ("");
 	const [sombraColor3, setSombra3] = useState ("");
-	// const [display, setDisplay] =useState("");
+	const [sombraColor4, setSombra4] = useState ("");
+	const [display, setDisplay] =useState("d-none");
+	const [marginbt,setMargin]= useState("mb-3");
 
 	function encenderRojo() {
 
@@ -31,6 +33,7 @@ const Home = () => {
 			setColor1("")
 			setSombra2("")
 			setSombra3("")
+			setSombra4("");
 			setSombra1("0 0 15px 10px yellow")
 	}
 }
@@ -42,6 +45,7 @@ function encenderAmarillo() {
 		setColor2("")
 		setSombra1("")
 		setSombra3("")
+		setSombra4("");
 		setSombra2("0 0 15px 10px yellow")
 	}
 }
@@ -52,6 +56,7 @@ function encenderVerde() {
 		setColor3("")
 		setSombra1("")
 		setSombra2("")
+		setSombra4("");
 		setSombra3("0 0 15px 10px yellow")
 	}
 }
@@ -61,40 +66,63 @@ function alternarColor() {
 		setSombra1("");
 		setSombra2("0 0 15px 10px yellow");
 		setSombra3("");
+		setSombra4("");
 	}
 	if(sombraColor2 === "0 0 15px 10px yellow"){
 		setSombra1("");
 		setSombra2("");
+		setSombra4("");
 		setSombra3("0 0 15px 10px yellow");
 	}
 	if(sombraColor3 === "0 0 15px 10px yellow"){
 		setSombra2("");
+		setSombra1("");
 		setSombra3("");
-		setSombra1("0 0 15px 10px yellow");
+		setSombra4("0 0 15px 10px yellow");
 	}
-	else if(sombraColor1 ==="" && sombraColor2 ==="" && sombraColor3 ===""){
+	if(sombraColor4 === "0 0 15px 10px yellow"){
+		setSombra1("0 0 15px 10px yellow");
+		setSombra2("");
+		setSombra3("");
+		setSombra4("");
+	}
+	else if(sombraColor1 ==="" && sombraColor2 ==="" && sombraColor3 ==="" && sombraColor4 ===""){
 		setSombra1("0 0 15px 10px yellow");
 	}
 
 }
 
-// function desplegarVioleta() {
-// if(display === "d-none"){
-// 	setDisplay("")
-// }else{
+function desplegarVioleta() {
+if(display === "d-none"){
+	setDisplay("")
+	setMargin("")
+}else{
+setDisplay("d-none")
+setMargin("mb-3")
+}
+}
 
-// }
-// }
+function encenderVioleta(){
+	if(sombraColor4 === "0 0 15px 10px yellow"){
+		setSombra4("");
+	}else{
+		setSombra4("0 0 15px 10px yellow");
+		setSombra1("");
+		setSombra2("");
+		setSombra3("");
+	}
+}
 return (
 	<div className="text-center d-flex flex-column align-items-center">
 		<div class="bg-dark" style={{height:"150px", width:"10px"}}></div>
 		<div class="d-grid gap-0 col-1 mx-auto bg-dark rounded-4">
 		<button className={"btn border rounded-circle mt-3 mx-2 btn-danger "} onClick={encenderRojo} style={{height: "100px", boxShadow: sombraColor1}}></button>
 		<button className={"btn border rounded-circle mx-2 btn-warning "} onClick={encenderAmarillo} style={{height: "100px", boxShadow: sombraColor2}}></button>
-		<button className={"btn border rounded-circle mb-3 mx-2 btn-success "} onClick={encenderVerde} style={{height: "100px", boxShadow: sombraColor3}}></button>
+		<button className={"btn border rounded-circle mx-2 btn-success "+ marginbt} onClick={encenderVerde} style={{height: "100px", boxShadow: sombraColor3}}></button>
+		<button className={"btn mb-2 mx-2 rounded-circle " + display} onClick={encenderVioleta} style={{height: "100px", backgroundColor: "purple", boxShadow: sombraColor4}}></button>
 		</div>
-		<button type="button" className="btn btn-info m-5" onClick={alternarColor}>Click to change light</button>
-		{/* <button type="button" className="btn btn-info m-5" onClick={desplegarVioleta}>Click to purple light</button> */}
+		<button type="button" className="btn btn-info m-3" onClick={alternarColor}>Click to change light</button>
+		<button type="button" className="btn btn-info m-3" onClick={desplegarVioleta}>Click to purple light</button>
 	</div>
 );
 };
